@@ -1,3 +1,10 @@
+# Requirements
+By now this plugin/installation is tested only on linux!
+The only needs (tested) are:
+- linux as os
+- git
+- blender 3.5.1 
+
 # Install the plugin
 1. Make sure to have git installed.
 2. Download this github.
