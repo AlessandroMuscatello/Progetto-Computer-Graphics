@@ -27,7 +27,7 @@ class AddonProperties(PropertyGroup):
         default = ""
         )
     mask_file_path: StringProperty(
-        name = "",
+        name = "Mask FilePath",
         description = "FilePath of the mask of the image to be inferenced",
         default = ""
         )

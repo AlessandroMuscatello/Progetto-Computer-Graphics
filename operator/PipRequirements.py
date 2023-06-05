@@ -16,15 +16,13 @@ class PipRequirements(Operator):
             'python/bin/python3.10')
         subprocess.call([py_path, "-m", "ensurepip"])
         
-
-
         # install required packages
         requirements = os.path.join(
             bpy.utils.resource_path('USER'),
             'scripts/addons/AutoSDF_addon/operator/'
             'requirements.txt')
         print('requirements path = '+requirements)
-        #subprocess.call([py_path, "-m", "pip", "install", '-r', requirements])
+        subprocess.call([py_path, "-m", "pip", "install", '-r', requirements])
 
         # install git for pytorch3d separated
         import sys
