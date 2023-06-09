@@ -17,10 +17,12 @@ class PipRequirements(Operator):
         subprocess.call([py_path, "-m", "ensurepip"])
         
         # install required packages
-        requirements = os.path.join(
-            bpy.utils.resource_path('USER'),
-            'scripts/addons/AutoSDF_addon/operator/'
-            'requirements.txt')
+        # Find current script directory (the Blender plugin directory)
+        script_dir = os.path.dirname(os.path.realpath(__file__))
+        
+        # Install required packages
+
+        requirements = os.path.join(script_dir, 'requirements.txt')
         print('requirements path = '+requirements)
         subprocess.call([py_path, "-m", "pip", "install", '-r', requirements])
 
@@ -40,9 +42,11 @@ class PipRequirements(Operator):
         
         # copy the resnet checkpoint to .cache to avoid fail when downloading
         import shutil
-        
-        source_folder = os.path.join(bpy.utils.script_paths()[1], 'AutoSDF_addon/AutoSDF/torch')  # Specify the path of the source folder
-        destination_folder = os.path.expanduser('~/.cache')
-        shutil.copytree(source_folder, destination_folder)
-
+        destination_folder = os.path.expanduser('~/.cache/torch/hub/checkpoints')
+        if not os.path.exists(destination_folder):
+            # Create the folder if it doesn't exist
+            os.makedirs(destination_folder)
+        # Copy the file to the destination folder
+        source_file = os.path.join(bpy.utils.script_paths()[1], 'addons/AutoSDF_addon/AutoSDF/torch/hub/checkpoints/resnet18-f37072fd.pth')
+        shutil.copy2(source_file, destination_folder)
         return {'FINISHED'}
