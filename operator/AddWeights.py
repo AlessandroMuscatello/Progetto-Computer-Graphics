@@ -42,9 +42,11 @@ class AddWeights(Operator):
                     bpy.context.window_manager.popup_menu(draw, title="Error", icon='INFO')
                     return {'FINISHED'}
             # Delete old external weights
-            for item in os.listdir(output_path):
-                item_path = os.path.join(output_path, item)
-                os.remove(item_path)
+            if os.path.exists(output_path):
+                for item in os.listdir(output_path):
+                    item_path = os.path.join(output_path, item)
+                    os.remove(item_path)
+            else: os.makedirs(output_path)
             zip_ref.extractall(output_path)
                 
         return {'FINISHED'}
