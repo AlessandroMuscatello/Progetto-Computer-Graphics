@@ -35,7 +35,6 @@ class RunInference(Operator):
 
         # img marginal model
         resnet2vq = load_resnet2vq_model(opt)
-        print('qui')
         """ setup renderer """
         #dist, elev, azim = 1.7, 20, 20
         #mesh_renderer = init_mesh_renderer(image_size=256, dist=dist, elev=elev, azim=azim, device=opt.device)
@@ -70,8 +69,3 @@ class RunInference(Operator):
         obj.location = (scene.X, scene.Y, scene.Z)
         bpy.context.scene.collection.objects.link(obj)
         return {'FINISHED'}
-    
-
-
-
-

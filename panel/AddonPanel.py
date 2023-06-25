@@ -4,6 +4,7 @@ from ..operator.AddImage import AddImage
 from ..operator.AddMask import AddMask
 from ..operator.RunInference import RunInference
 from ..operator.PipRequirements import PipRequirements
+from ..operator.AddWeights import AddWeights
 # The panel class allows us create panel that presents information and input-options for the addon`s user. 
 class AddonPanel(Panel):
     # The label will be the label of the addon in the user interface.
@@ -22,8 +23,9 @@ class AddonPanel(Panel):
         col = layout.column() 
         # Add the button for the call to the operators
         col.operator(PipRequirements.bl_idname, icon = "SCRIPTPLUGINS")
-        col.operator(AddImage.bl_idname, icon = "EVENT_U")
-        col.operator(AddMask.bl_idname, icon = "MESH_PLANE")
+        col.operator(AddWeights.bl_idname, icon = "MOD_VERTEX_WEIGHT")
+        col.operator(AddImage.bl_idname, icon = "RESTRICT_RENDER_OFF")
+        col.operator(AddMask.bl_idname, icon = "MOD_MASK")
         # Add the slider for the selection of the position of the inferenced object
         col.prop(scene, "X", icon='EVENT_X')
         col.prop(scene, "Y", icon='EVENT_Y')

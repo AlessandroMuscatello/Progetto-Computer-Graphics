@@ -17,7 +17,6 @@ class AddImage(Operator):
     # Function called when the file has been selected in the Window Manager 
     def execute(self, context):
         # Saves the image path in the global property
-        
         context.scene.your_properties.img_file_path = self.filepath
         print('Image path selected: '+ context.scene.your_properties.img_file_path)
         return {'FINISHED'}

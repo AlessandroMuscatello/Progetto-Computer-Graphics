@@ -19,6 +19,7 @@ from .operator.AddMask import AddMask
 from .operator.RunInference import RunInference
 from .panel.AddonPanel import AddonPanel
 from .operator.PipRequirements import PipRequirements
+from .operator.AddWeights import AddWeights
 
 # Plugin info
 bl_info = {
@@ -39,6 +40,7 @@ __classes__ = (
     AddImage,
     AddMask,
     RunInference,
+    AddWeights,
 )
 
 # Register classes for addon
